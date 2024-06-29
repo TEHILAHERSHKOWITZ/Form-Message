@@ -1,0 +1,33 @@
+<br>
+<br>
+<h3>{{title}}</h3>
+<form (submit)="Save($event)" [formGroup]="EmployeeForm" class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Title</label>
+            <input [ngClass]="{'ng-invalid ng-dirty':!EmployeeForm.controls['title'].valid && EmployeeForm.controls['title'].touched}" formControlName="title" pInputText placeholder="Title">
+            <div *ngIf="!EmployeeForm.controls['title'].valid && EmployeeForm.controls['title'].touched">
+                <small *ngIf="EmployeeForm.controls['title'].errors && EmployeeForm.controls['title'].errors['required']" class="p-errors">Must Enter Value</small>
+                <small *ngIf="EmployeeForm.controls['title'].errors && EmployeeForm.controls['title'].errors['minlength']" class="p-errors">Min Length Is 2</small>
+                <small *ngIf="EmployeeForm.controls['title'].errors && EmployeeForm.controls['title'].errors['maxlength']" class="p-errors">Max Length Is 40</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Body</label>
+            <input [ngClass]="{'ng-invalid ng-dirty':!EmployeeForm.controls['body'].valid && EmployeeForm.controls['body'].touched}" formControlName="body" pInputText placeholder="Body">
+            <div *ngIf="!EmployeeForm.controls['body'].valid && EmployeeForm.controls['body'].touched">
+                <small *ngIf="EmployeeForm.controls['body'].errors && EmployeeForm.controls['body'].errors['required']" class="p-errors">Must Enter Value</small>
+                <small *ngIf="EmployeeForm.controls['body'].errors && EmployeeForm.controls['body'].errors['minlength']" class="p-errors">Min Length Is 2</small>
+                <small *ngIf="EmployeeForm.controls['body'].errors && EmployeeForm.controls['body'].errors['maxlength']" class="p-errors">Max Length Is 300</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <button *ngIf="!message" class="p-button row m-1" type="submit" style="width: 100%">Add Message</button>
+            <button *ngIf="message" class="p-button row m-1" type="submit" style="width: 100%">Save</button>
+        </div>
+    </div>
+</form>
